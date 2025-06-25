@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "26f423fb-efef-49eb-ae7d-f0683a5fec52",
+		"name": "Smart Parking System API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42449481",
+		"_collection_link": "https://xcvcxv-2223.postman.co/workspace/test~a7ba3374-614f-4bc0-8068-0951b63dfe17/collection/42449481-26f423fb-efef-49eb-ae7d-f0683a5fec52?action=share&source=collection_link&creator=42449481"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register a User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"U001\",\n  \"fullName\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"ADMIN\",\n  \"phoneNumber\": \"0771234567\",\n  \"vehiclePlate\": \"ABC-1234\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users/U002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"U002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users/U001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"U001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Register -Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"licensePlate\": \"ABC-1234\",\n  \"model\": \"Toyota Prius\",\n  \"ownerId\": \"U001\",\n  \"parked\": false\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"licensePlate\": \"XYZ-9876\",\n  \"model\": \"Tesla Model 3\",\n  \"ownerId\": \"U001\",\n  \"parked\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/vehicles/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"vehicles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/vehicles/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"vehicles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles by Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/v1/vehicles/owner/U001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"vehicles",
+								"owner",
+								"U001"
+							]
+						},
+						"description": "### Get Vehicle Information by Owner ID\n\nThis endpoint retrieves information about vehicles associated with a specific owner identified by their unique owner ID.\n\n#### Request\n\n- **Method**: GET\n    \n- **URL**: `http://localhost:8083/api/v1/vehicles/owner/{ownerId}`\n    \n    **Path Parameter**:\n    \n    - `ownerId` (string): The unique identifier for the vehicle owner. In this example, the owner ID is `U001`.\n        \n\n#### Response\n\n- **Status Code**: 200 OK\n    \n- **Content-Type**: application/json\n    \n\nThe response will be an array of vehicle objects associated with the specified owner ID. Each vehicle object contains the following fields:\n\n- `id` (integer): The unique identifier for the vehicle.\n    \n- `licensePlate` (string): The license plate number of the vehicle.\n    \n- `model` (string): The model of the vehicle.\n    \n- `ownerId` (string): The ID of the vehicle owner.\n    \n- `parked` (boolean): Indicates whether the vehicle is currently parked.\n    \n\n#### Example Response\n\n``` json\n[\n  {\n    \"id\": 0,\n    \"licensePlate\": \"\",\n    \"model\": \"\",\n    \"ownerId\": \"\",\n    \"parked\": true\n  }\n]\n\n ```\n\n#### Notes\n\n- Ensure that the `ownerId` is valid and corresponds to an existing owner in the system to receive accurate vehicle information.\n    \n- The response may contain multiple vehicle objects or an empty array if no vehicles are associated with the given owner ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate Entry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/vehicles/entry/ABC-1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"vehicles",
+								"entry",
+								"ABC-1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate Exit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/vehicles/exit/ABC-1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"vehicles",
+								"exit",
+								"ABC-1234"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Make a Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": 1,\n  \"vehicleId\": 10,\n  \"spaceId\": 5,\n  \"amount\": 500.00,\n  \"paymentMethod\": \"CREDIT_CARD\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payments for a User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/api/payments/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"payments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parking Spaces",
+			"item": [
+				{
+					"name": "Create -Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"AVAILABLE\",\n  \"spaceIdentifier\": \"P-101\",\n  \"location\": \"Main Street - Zone A\",\n  \"pricePerHour\": 150.00,\n  \"ownerId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/parking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Parking Space by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/parking/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Parking Spaces by Owner ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/parking/owner/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking",
+								"owner",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Parking Spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/parking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Parking Space",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"RESERVED\",\n  \"spaceIdentifier\": \"P-101\",\n  \"location\": \"Main Street - Zone A\",\n  \"pricePerHour\": 200.00,\n  \"ownerId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/parking/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Parking Space",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/parking/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"parking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get User by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/users/U002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"U002"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
