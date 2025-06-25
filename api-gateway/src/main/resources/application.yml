@@ -19,18 +19,25 @@ spring:
             - id: payment-service
               uri: http://localhost:8085/
               predicates:
-                - Path=/api/payments/**
+                - Path=/api/v1/payments/**
+
 
             - id: parking-service
               uri: http://localhost:8084/
               predicates:
-                - Path=/api/parking/**
+                - Path=/api/v1/parking/**
 
 
-            - id: parking-service
+            - id: vehicle-service
               uri: http://localhost:8083/
               predicates:
-                - Path=/api/parking/**
+                - Path=/api/v1/vehicles/**
+
+
+            - id: user-service
+              uri: http://localhost:8089/
+              predicates:
+                - Path=/api/v1/users/**
     config:
       enabled: false
       import-check:

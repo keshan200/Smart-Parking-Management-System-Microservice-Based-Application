@@ -14,7 +14,7 @@ public class VehicleDTO {
 
     public VehicleDTO() {}
 
-    // Getters and setters
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getLicensePlate() { return licensePlate; }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vehicles")
+@RequestMapping("/api/v1/vehicles")
 public class VehicleController {
 
     private final VehicleService vehicleService;
@@ -20,7 +20,7 @@ public class VehicleController {
 
     @PostMapping
     public ResponseEntity<?> registerVehicle(@RequestBody VehicleDTO vehicleDTO) {
-        // Manual field validation
+
         String error = validateVehicleDTO(vehicleDTO);
         if (error != null) {
             return ResponseEntity.badRequest().body(error);
@@ -32,7 +32,7 @@ public class VehicleController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateVehicle(@PathVariable Long id, @RequestBody VehicleDTO vehicleDTO) {
-        // Manual field validation
+
         String error = validateVehicleDTO(vehicleDTO);
         if (error != null) {
             return ResponseEntity.badRequest().body(error);

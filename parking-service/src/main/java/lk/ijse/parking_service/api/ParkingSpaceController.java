@@ -10,13 +10,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/parking")
+@RequestMapping("/api/v1/parking")
 public class ParkingSpaceController {
 
     @Autowired
     private ParkingSpaceService service;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<?> create(@RequestBody ParkingSpaceDTO dto) {
         String error = validate(dto);
         if (error != null) {
