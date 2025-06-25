@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/SmartParkingSystem?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: Ijse@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true
+
+jwt:
+  secret: 2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566DF423F4428472B4B6250655368566D
+  expiration: 3600000
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    instance: prefer-ip-address:true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

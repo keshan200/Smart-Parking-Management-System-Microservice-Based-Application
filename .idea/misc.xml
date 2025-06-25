@@ -8,6 +8,10 @@
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/API-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/API-Gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/pom.xml" />
+        <option value="$PROJECT_DIR$/parking-service/pom.xml" />
+        <option value="$PROJECT_DIR$/vehicle-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -11,12 +11,34 @@ spring:
       server:
         webflux:
           routes:
-            - id: product-service # Kamathi unique ID ekak denna
-              uri: http://localhost:8081
-              # uri: lb://PRODUCT_SERVICE
+            - id: parking-service
+              uri: http://localhost:8082/
               predicates:
-                - Path=/product-service/**
+                - Path=/api/v1/parking-service/**
+
+            - id: payment-service
+              uri: http://localhost:8085/
+              predicates:
+                - Path=/api/payments/**
+
+            - id: parking-service
+              uri: http://localhost:8084/
+              predicates:
+                - Path=/api/parking/**
+
+
+            - id: parking-service
+              uri: http://localhost:8083/
+              predicates:
+                - Path=/api/parking/**
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
