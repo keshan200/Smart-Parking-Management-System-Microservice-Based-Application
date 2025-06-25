@@ -192,7 +192,7 @@ cd payment-service && mvn spring-boot:run
 <div align="center">
 
 ### 🔗 **Essential Links**
-- **[🧪 Postman Collection](./img/Smart%20Parking%20System%20API.postman_collection.json)** - *Your complete API testing toolkit*
+- **[🧪 Postman Collection](./img/SmartParkingSystemAPIpostmancollection.json)** - *Your complete API testing toolkit*
 - **![🎯 Eureka Dashboard](./img/dashboard.png)** - *Service registry visualization*
 
 </div>
