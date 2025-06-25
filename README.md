@@ -193,7 +193,7 @@ cd payment-service && mvn spring-boot:run
 
 ### 🔗 **Essential Links**
 - **[🧪 Postman Collection](./postman_collection.json)** - *Your complete API testing toolkit*
-- **![🎯 Eureka Dashboard](./docs/screenshots/eureka_dashboard.png)** - *Service registry visualization*
+- **![🎯 Eureka Dashboard](./img/dashboard.png)** - *Service registry visualization*
 
 </div>
 
